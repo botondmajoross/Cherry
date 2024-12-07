@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Tasks</title>
+    <link href="employeesCSS.css" rel="stylesheet" />
+    <style>
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <button onclick="location.href='index.html'">Főoldal</button>
+        <button onclick="location.href='employees.html'">Employees</button>
+        <button onclick="location.href='projects.html'">Projects</button>
+        <button onclick="location.href='tasks.html'">Tasks</button>
+    </div>
+
+    <div class="content">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Project</th>
+                    <th>Assigned to</th>
+                    <th>Task</th>
+                    <th>Description</th>
+                    
+                </tr>
+            </thead>
+            <tbody id="tb_emp"></tbody>
+                <script>
+                    fetch("api/task").then(v => v.json()).then(o => {
+
+                        let tbody = document.getElementById("tb_emp");
+
+                        console.log("GET:", o);
+
+                        o.forEach(e => {
+                            let tr = document.createElement("tr");
+                            tr.innerHTML = `
+                                <td>${e.taskId}</td>
+                                <td>${e.projectId}</td>
+                                <td>${e.assignedTo}</td>
+                                <td>${e.taskName}</td>
+                                <td>${e.description}</td>
+                                
+                                `;
+                            tbody.appendChild(tr);
+                        });
+                    })
+
+                   
+                </script>
+                
+        </table>
+    </div>
+
+</body>
+</html>
