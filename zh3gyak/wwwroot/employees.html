@@ -20,6 +20,18 @@
     <div class="content">
         <table>
             <thead>
+                <tr style="background-color: azure">
+                    <td style="font-weight: bold">Add a new employee</td>
+                    <td><input id="name" type="text" placeholder="Add a new name" /></td>
+                    <td><input id="posi" type="text" placeholder="Add a new position" /></td>
+                    <td><input id="email" type="text" placeholder="Add a new email" /></td>
+                    <td>
+                        <input id="phone" type="text" placeholder="Add a new phone number" />&nbsp;&nbsp;&nbsp;
+                        <button id="AddButton" style="width: 85px; height: 30px; border-radius: 5px; cursor: pointer;">Add</button>
+                    </td>
+
+                    
+                </tr>
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
@@ -30,29 +42,14 @@
                 </tr>
             </thead>
             <tbody id="tb_emp"></tbody>
-            <script>
-                fetch("api/employee").then(v => v.json()).then(o => {
-
-                    let tbody = document.getElementById("tb_emp");
-
-                    console.log("GET:", o);
-
-                    o.forEach(e => {
-                        let tr = document.createElement("tr");
-                        tr.innerHTML = `
-                                            <td>${e.employeeId}</td>
-                                            <td>${e.name}</td>
-                                            <td>${e.position}</td>
-                                            <td>${e.email}</td>
-                                            <td>${e.phone}</td>
-
-                                            `;
-                        tbody.appendChild(tr);
-                    });
-                })
+           
+                <script src="betoltes.js">
 
 
-            </script>
+                </script>
+
+
+            
 
         </table>
     </div>
